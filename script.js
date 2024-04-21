@@ -1,11 +1,11 @@
 const myLibrary = [];
 
-function Book(title, author, pages, isRead, isLiked) {
+function Book(title, author, pages, genre, isRead, isLiked) {
     // the constructor...
-    // author, title, number of pages, whether it’s been read and anything else
     this.title = title;
     this.author = author;
     this.pages = pages;
+    this.genre = genre;
     this.isRead = isRead;
     this.isLiked = isLiked;
 
