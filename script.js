@@ -14,7 +14,28 @@ const myLibrary = [
         publishYear: 1932,
         genre: 'Dystopian Fiction',
         isRead: 'Yes',
-    }
+    },    {
+        title: 'The Art of War',
+        author: 'Sun Tzu',
+        pages: 256,
+        publishYear: 1772,
+        genre: 'Military Strategy',
+        isRead: 'Yes',
+    },    {
+        title: 'The Art of War',
+        author: 'Sun Tzu',
+        pages: 256,
+        publishYear: 1772,
+        genre: 'Military Strategy',
+        isRead: 'Yes',
+    },    {
+        title: 'The Art of War',
+        author: 'Sun Tzu',
+        pages: 256,
+        publishYear: 1772,
+        genre: 'Military Strategy',
+        isRead: 'Yes',
+    },
 ];
 
 function Book(title, author, pages, publishYear, genre, isRead) {
@@ -34,6 +55,8 @@ function addBookToLibrary() {
 
 
 
+
+
 myLibrary.forEach( (book) => {
     const library = document.getElementById('library');
 
@@ -46,6 +69,9 @@ myLibrary.forEach( (book) => {
     const cardBookPublished = document.createElement('div')
     const cardBookGenre = document.createElement('div')
     const cardBookIsRead = document.createElement('div')
+    const cardReadButton = document.createElement('button')
+    const cardDeleteButton = document.createElement('button')
+
 
     cardBookTitle.setAttribute('class', 'cardInfo');
     cardBookTitle.setAttribute('id', 'cardBookTitle');
@@ -59,6 +85,8 @@ myLibrary.forEach( (book) => {
     cardBookGenre.setAttribute('id', 'cardBookGenre')
     cardBookIsRead.setAttribute('class', 'cardInfo')
     cardBookIsRead.setAttribute('id', 'cardBookIsRead')
+    cardReadButton.setAttribute('id', 'read-btn')
+    cardDeleteButton.setAttribute('id', 'delete-btn')
 
 
     cardBookTitle.textContent = `Title: ${book.title}`;
@@ -67,6 +95,9 @@ myLibrary.forEach( (book) => {
     cardBookPublished.textContent = `Published: ${book.publishYear}`;
     cardBookGenre.textContent = `Genre: ${book.genre}`;
     cardBookIsRead.textContent = `Have you read it: ${book.isRead}`;
+    cardReadButton.textContent = `Read?`;
+    cardDeleteButton.textContent = `Delete`;
+
 
     library.appendChild(newCard);
     newCard.appendChild(cardBookTitle)
@@ -75,5 +106,22 @@ myLibrary.forEach( (book) => {
     newCard.appendChild(cardBookPublished)
     newCard.appendChild(cardBookGenre)
     newCard.appendChild(cardBookIsRead)
- 
+    newCard.appendChild(cardReadButton)
+    newCard.appendChild(cardDeleteButton)
+
+
+
 })
+
+// prototype functions for delete button, 'have read' button
+
+
+
+function haveRead() {
+    const haveReadBtn = document.getElementById('read-btn')
+    haveReadBtn.click =  function() {
+        console.log('read button working');
+    }
+}
+
+Book.prototype.read = haveRead();
