@@ -36,18 +36,44 @@ function addBookToLibrary() {
 
 myLibrary.forEach( (book) => {
     const library = document.getElementById('library');
-    console.log(book);
 
     const newCard = document.createElement('div');
     newCard.classList.add('bookCard');
 
-    newCard.textContent = `Title: ${book.title}`;
-    // newCard.textContent = `Author: ${book.author}`;
-    // newCard.textContent = `pages: ${book.pages}`;
-    // newCard.textContent = `Published: ${book.publishYear}`;
-    // newCard.textContent = `Genre: ${book.genre}`;
-    // newCard.textContent = `Have you read it: ${book.isRead}`;
+    const cardBookTitle = document.createElement('div')
+    const cardBookAuthor = document.createElement('div')
+    const cardBookPages = document.createElement('div')
+    const cardBookPublished = document.createElement('div')
+    const cardBookGenre = document.createElement('div')
+    const cardBookIsRead = document.createElement('div')
+
+    cardBookTitle.setAttribute('class', 'cardInfo');
+    cardBookTitle.setAttribute('id', 'cardBookTitle');
+    cardBookAuthor.setAttribute('class', 'cardInfo')
+    cardBookAuthor.setAttribute('id', 'cardBookAuthor')
+    cardBookPages.setAttribute('class', 'cardInfo')
+    cardBookPages.setAttribute('id', 'cardBookPages')
+    cardBookPublished.setAttribute('class', 'cardInfo')
+    cardBookPublished.setAttribute('id', 'cardBookPublished')
+    cardBookGenre.setAttribute('class', 'cardInfo')
+    cardBookGenre.setAttribute('id', 'cardBookGenre')
+    cardBookIsRead.setAttribute('class', 'cardInfo')
+    cardBookIsRead.setAttribute('id', 'cardBookIsRead')
+
+
+    cardBookTitle.textContent = `Title: ${book.title}`;
+    cardBookAuthor.textContent = `Author: ${book.author}`;
+    cardBookPages.textContent = `Pages: ${book.pages}`;
+    cardBookPublished.textContent = `Published: ${book.publishYear}`;
+    cardBookGenre.textContent = `Genre: ${book.genre}`;
+    cardBookIsRead.textContent = `Have you read it: ${book.isRead}`;
 
     library.appendChild(newCard);
+    newCard.appendChild(cardBookTitle)
+    newCard.appendChild(cardBookAuthor)
+    newCard.appendChild(cardBookPages)
+    newCard.appendChild(cardBookPublished)
+    newCard.appendChild(cardBookGenre)
+    newCard.appendChild(cardBookIsRead)
  
 })
