@@ -13,21 +13,27 @@
         <div class="lib-central">
             <div class="library" id="library"></div>
             <div class="sidebar">
-                Add a new book to your library!
-                <br>
-                <label for="book-title">Title</label>
-                <input type="text" id="book-title">
-                <label for="book-author" >Author</label>
-                <input type="text" id="book-author">
-                <label for="book-pages">Page Count</label>
-                <input type="text" id="book-pages">
-                <label for="book-publish-year">Year Published</label>
-                <input type="text" id="book-publish-year">
-                <label for="book-genre">Genre</label>
-                <input type="text" id="book-genre">
-                <label for="have-read">Have Read?</label>
-                <input type="text" id="have-read">
-
+                <form action="#" method="post">
+                    <legend>Add a new book to your library!</legend>
+                    <br>
+                    <label for="book-title">Title</label>
+                    <input type="text" id="book-title" name="book-title">
+                    <label for="book-author" >Author</label>
+                    <input type="text" id="book-author" name="book-author">
+                    <label for="book-pages">Page Count</label>
+                    <input type="text" id="book-pages" name="book-pages">
+                    <label for="book-publish-year">Year Published</label>
+                    <input type="text" id="book-publish-year" name="book-publish-year">
+                    <label for="book-genre">Genre</label>
+                    <input type="text" id="book-genre" name="book-genre">
+                    <label for="have-read">Have Read?</label>
+                    <select id="have-read" name="have-read">
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select>
+                    <button type="submit" id="submit-btn">Add</button>
+                    <button type="reset">Reset</button>
+                </form>
             </div>
         </div>
     </div>
