@@ -59,13 +59,36 @@ function addBookToLibrary() {
 const librarySubmitBtn = document.querySelector("#submit-btn")
 librarySubmitBtn.addEventListener("click", librarySubmit, false)
 
+
 function librarySubmit(event) {
+    event.preventDefault();
     console.log('preventDefault() is working!')
     
+    const formBookTitle = document.getElementById('book-title')
+    const formBookAuthor = document.getElementById('book-author')
+    const formBookPages = document.getElementById('book-pages')
+    const formBookPublish = document.getElementById('book-publish-year')
+    const formBookGenre = document.getElementById('book-genre')
+    const formBookHaveRead = document.getElementById('have-read')
+
+
+
+    const newBook = new Book(formBookTitle.value, 
+                            formBookAuthor.value,
+                            formBookPages.value,
+                            formBookPublish.value,
+                            formBookGenre.value,
+                            formBookHaveRead.value )
+
+
+    myLibrary.push(newBook)
     
+    document.querySelectorAll('.bookCard').forEach(element => {
+        element.remove();
+    })
     
-    event.preventDefault();
     libInit();
+
 }
 
 
@@ -73,6 +96,8 @@ function librarySubmit(event) {
 const libInit = function() {
     myLibrary.forEach( (book) => {
         const library = document.getElementById('library');
+
+
 
         const newCard = document.createElement('div');
         newCard.classList.add('bookCard');
