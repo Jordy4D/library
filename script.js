@@ -1,43 +1,21 @@
 const myLibrary = [
-    // {
-    //     title: 'The Art of War',
-    //     author: 'Sun Tzu',
-    //     pages: 256,
-    //     publishYear: 1772,
-    //     genre: 'Military Strategy',
-    //     isRead: 'Yes',
-    // },
-    // {
-    //     title: 'Brave New World',
-    //     author: 'Aldous Huxley',
-    //     pages: 311,
-    //     publishYear: 1932,
-    //     genre: 'Dystopian Fiction',
-    //     isRead: 'Yes',
-    // },    {
-    //     title: 'The Art of War',
-    //     author: 'Sun Tzu',
-    //     pages: 256,
-    //     publishYear: 1772,
-    //     genre: 'Military Strategy',
-    //     isRead: 'Yes',
-    // },    {
-    //     title: 'The Art of War',
-    //     author: 'Sun Tzu',
-    //     pages: 256,
-    //     publishYear: 1772,
-    //     genre: 'Military Strategy',
-    //     isRead: 'Yes',
-    // },    {
-    //     title: 'The Art of War',
-    //     author: 'Sun Tzu',
-    //     pages: 256,
-    //     publishYear: 1772,
-    //     genre: 'Military Strategy',
-    //     isRead: 'Yes',
-    // },
+    {
+        title: 'The Art of War',
+        author: 'Sun Tzu',
+        pages: 256,
+        publishYear: 1772,
+        genre: 'Military Strategy',
+        isRead: 'Yes',
+    },
+    {
+        title: 'Brave New World',
+        author: 'Aldous Huxley',
+        pages: 311,
+        publishYear: 1932,
+        genre: 'Dystopian Fiction',
+        isRead: 'Yes',
+    }
 ];
-
 
 
 function Book(title, author, pages, publishYear, genre, isRead) {
@@ -63,66 +41,6 @@ function Book(title, author, pages, publishYear, genre, isRead) {
     }
 
 }
-
-// Book.prototype.readBook = function() {
-//     document.getElementById('read-btn-id').addEventListener('click', function () {
-//         console.log("this is the prototype func");
-//     })
-// }
-
-// const libInitReformed = function(arr) {
-//     for (let i = 0; i <= arr.length; i++) {
-//         const library = document.getElementById('library');
-
-//         const newCard = document.createElement('div');
-//         newCard.classList.add('bookCard');
-
-//         const cardBookTitle = document.createElement('div')
-//         const cardBookAuthor = document.createElement('div')
-//         const cardBookPages = document.createElement('div')
-//         const cardBookPublished = document.createElement('div')
-//         const cardBookGenre = document.createElement('div')
-//         const cardBookIsRead = document.createElement('div')
-//         const cardReadButton = document.createElement('button')
-//         const cardDeleteButton = document.createElement('button')
-
-
-//         cardBookTitle.setAttribute('class', 'cardInfo');
-//         cardBookTitle.setAttribute('id', 'cardBookTitle');
-//         cardBookAuthor.setAttribute('class', 'cardInfo')
-//         cardBookAuthor.setAttribute('id', 'cardBookAuthor')
-//         cardBookPages.setAttribute('class', 'cardInfo')
-//         cardBookPages.setAttribute('id', 'cardBookPages')
-//         cardBookPublished.setAttribute('class', 'cardInfo')
-//         cardBookPublished.setAttribute('id', 'cardBookPublished')
-//         cardBookGenre.setAttribute('class', 'cardInfo')
-//         cardBookGenre.setAttribute('id', 'cardBookGenre')
-//         cardBookIsRead.setAttribute('class', 'cardInfo')
-//         cardBookIsRead.setAttribute('id', 'cardBookIsRead')
-//         cardReadButton.setAttribute('class', 'read-btn')
-//         cardReadButton.setAttribute('id', 'read-btn-id')
-//         cardDeleteButton.setAttribute('id', 'delete-btn')
-        
-//         cardBookTitle.textContent = `Title: ${book.title}`;
-//         cardBookAuthor.textContent = `Author: ${book.author}`;
-//         cardBookPages.textContent = `Pages: ${book.pages}`;
-//         cardBookPublished.textContent = `Published: ${book.publishYear}`;
-//         cardBookGenre.textContent = `Genre: ${book.genre}`;
-//         cardBookIsRead.textContent = `Have you read it: ${book.isRead}`;
-//         cardReadButton.textContent = `Read?`;
-//         cardDeleteButton.textContent = `Delete`;
-
-        
-
-//         const arrBook[i] = new Book(arr.title, 
-//                                     arr.author,
-//                                     arr.pages,
-//                                     arr.publishYear,
-//                                     arr.genre,
-//                                     arr.isRead)
-
-//     }
-// }
 
 
 const libInit = function() {
@@ -161,7 +79,14 @@ const libInit = function() {
         
         const cardReadButton = document.createElement('button')
         cardReadButton.setAttribute('class', 'read-btn')
-        cardReadButton.setAttribute('id', 'read-btn-id')
+        
+        if (book.isRead === 'Yes'){
+            cardReadButton.setAttribute('id', 'read-btn-id-yes')
+
+        } else if (book.isRead === 'No') {
+            cardReadButton.setAttribute('id', 'read-btn-id-no')
+        }
+        
         
         const cardDeleteButton = document.createElement('button')
         cardDeleteButton.setAttribute('id', 'delete-btn')
@@ -193,29 +118,26 @@ const libInit = function() {
         newCard.appendChild(cardReadButton)
         newCard.appendChild(cardDeleteButton)
 
-        cardReadButton.addEventListener('click', function() {
-            // console.log('testing card read button');
+        cardReadButton.addEventListener('click', function () {
+            
             if (book.isRead === 'Yes'){
-                console.log('yes test')
-                cardReadButton.textContent = `Have Read: No`;
-                this.appendChild(cardReadButton)
+                book.isRead = 'No'
+                cardReadButton.setAttribute('id', 'read-btn-id-yes')
+                cardReadButton.textContent = `Have Read: ${book.isRead}`;
 
             } else if (book.isRead === 'No') {
-                console.log('no test')
-                
-                cardReadButton.textContent = `Have Read: Yes`;
+                book.isRead = 'Yes'
+                cardReadButton.setAttribute('id', 'read-btn-id-no')
+                cardReadButton.textContent = `Have Read: ${book.isRead}`;
                 
             }
-            newCard.appendChild(cardReadButton)
-            
         }) 
 
 
         cardDeleteButton.addEventListener('click', function() {
             this.parentElement.remove();
-            myLibrary.splice(myLibrary.book);
-            
-            // libInit();
+            const objRemove = myLibrary.findIndex(value => value.title === book.title )
+            myLibrary.splice(objRemove, 1)
         })
 
 
@@ -235,7 +157,6 @@ librarySubmitBtn.addEventListener("click", addBookToLibrary, false)
 
 function addBookToLibrary(event) {
     event.preventDefault();
-    console.log('preventDefault() is working!')
     
     const formBookTitle = document.getElementById('book-title')
     const formBookAuthor = document.getElementById('book-author')
@@ -260,35 +181,14 @@ function addBookToLibrary(event) {
 
  
         
-    // document.querySelectorAll('.bookCard').forEach(element => {
-    //     element.remove();
-    // })
+    document.querySelectorAll('.bookCard').forEach(element => {
+        element.remove();
+    })
     
     libInit();
 
 }
 
 
-document.querySelectorAll('.bookCard').forEach(element => {
-    element.querySelector('#read-btn-id').onclick(alert('buttontest'))
-})
-
-
-
-
-
-
-
-
-    
-// window.addEventListener('DOMContentLoaded', (event) => {
-//     document.querySelectorAll(".read-btn").forEach(el => {
-//         el.addEventListener('click',function (e) {
-//             console.log('test');
-//             this.readBook.bind(this)
-            
-//         });
-//     });
-// });
 
     
