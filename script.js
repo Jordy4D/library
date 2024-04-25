@@ -79,13 +79,7 @@ const libInit = function() {
         
         const cardReadButton = document.createElement('button')
         cardReadButton.setAttribute('class', 'read-btn')
-        
-        if (book.isRead === 'Yes'){
-            cardReadButton.setAttribute('id', 'read-btn-id-yes')
-
-        } else if (book.isRead === 'No') {
-            cardReadButton.setAttribute('id', 'read-btn-id-no')
-        }
+        cardReadButton.setAttribute('id', 'read-btn-id')
         
         
         const cardDeleteButton = document.createElement('button')
