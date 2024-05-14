@@ -1,7 +1,7 @@
-class Library {
+function Library () {
     
     
-    myLibrary = [
+    let myLibrary = [
         {
             title: 'The Art of War',
             author: 'Sun Tzu',
@@ -17,7 +17,7 @@ class Library {
     ];
 
 
-    libraryInit = () => {
+    const libraryInit = () => {
         myLibrary.forEach( (book) => {
             const library = document.getElementById('library');
     
@@ -100,10 +100,11 @@ class Library {
     
         })
     }
+ 
     
-}
+    return { libraryInit, addBookToLibrary, myLibrary }
 
-let mainLibrary = new Library
+}
 
 
 class Book {
@@ -114,22 +115,6 @@ class Book {
         this.genre = genre;
         this.isRead = isRead;
     }
-
-
-    
-    isBookRead = () => {
-            // console.log('this is the readBook func');        
-            console.log('this is a test of bookRead!')
-            // if (this.isRead === 'Yes') {
-            //     this.isRead = 'No';
-    
-            // } else if (this.isRead === 'No') {
-            //     this.isRead = 'Yes';
-            // }
-            
-    
-        }
-
 
     addBookToLibrary = (event) => {
         event.preventDefault();
@@ -160,6 +145,23 @@ class Book {
         libraryInit();
     
     }
+    
+    
+    isBookRead = () => {
+            // console.log('this is the readBook func');        
+            console.log('this is a test of bookRead!')
+            // if (this.isRead === 'Yes') {
+            //     this.isRead = 'No';
+    
+            // } else if (this.isRead === 'No') {
+            //     this.isRead = 'Yes';
+            // }
+            
+    
+        }
+
+
+
 
     
 }
