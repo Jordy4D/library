@@ -1,7 +1,7 @@
-function Library () {
+const library = (function () {
     
     
-    let myLibrary = [
+    const myLibrary = [
         {
             title: 'The Art of War',
             author: 'Sun Tzu',
@@ -102,9 +102,9 @@ function Library () {
     }
  
     
-    return { libraryInit, addBookToLibrary, myLibrary }
+    return { myLibrary, libraryInit  }
 
-}
+})();
 
 
 class Book {
@@ -116,8 +116,8 @@ class Book {
         this.isRead = isRead;
     }
 
-    addBookToLibrary = (event) => {
-        event.preventDefault();
+    addBookToLibrary() {
+        // event.preventDefault();
         
         const formBookTitle = document.getElementById('book-title')
         const formBookAuthor = document.getElementById('book-author')
@@ -134,20 +134,22 @@ class Book {
                                 formBookHaveRead.value )
     
     
-        mainLibrary.myLibrary.push(newBook)
+        library.myLibrary.push(newBook)
     
         
             
         document.querySelectorAll('.bookCard').forEach(element => {
-            element.remove();
+        element.remove();
+
+
         })
         
-        libraryInit();
+        // library.libraryInit();
     
     }
     
     
-    isBookRead = () => {
+    isBookRead() {
             // console.log('this is the readBook func');        
             console.log('this is a test of bookRead!')
             // if (this.isRead === 'Yes') {
