@@ -116,17 +116,45 @@ class Book {
         this.isRead = isRead;
     }
 
-    addBookToLibrary() {
+    
+    
+    isBookRead() {
+        // console.log('this is the readBook func');        
+        console.log('this is a test of bookRead!')
+            // if (this.isRead === 'Yes') {
+            //     this.isRead = 'No';
+    
+            // } else if (this.isRead === 'No') {
+            //     this.isRead = 'Yes';
+            // }
+            
+    
+        }
+
+    
+
+
+    
+}
+
+
+const form = (function () {
+    
+    
+    addBookToLibrary = () => {
         // event.preventDefault();
-        
-        const formBookTitle = document.getElementById('book-title')
-        const formBookAuthor = document.getElementById('book-author')
-        const formBookGenre = document.getElementById('book-genre')
-        const formBookHaveRead = document.getElementById('have-read')
+       
+        // const formBookTitle = document.getElementById('book-title')
+        // const formBookAuthor = document.getElementById('book-author')
+        // const formBookGenre = document.getElementById('book-genre')
+        // const formBookHaveRead = document.getElementById('have-read')
     
         // document.querySelectorAll('#read-btn-id').addEventListener('click', function () {
         //     console.log("this is the prototype func");
         // })  
+    
+    
+    
     
         const newBook = new Book(formBookTitle.value, 
                                 formBookAuthor.value,
@@ -140,50 +168,17 @@ class Book {
             
         document.querySelectorAll('.bookCard').forEach(element => {
         element.remove();
-
-
+    
+    
         })
         
         // library.libraryInit();
     
     }
-    
-    
-    isBookRead() {
-            // console.log('this is the readBook func');        
-            console.log('this is a test of bookRead!')
-            // if (this.isRead === 'Yes') {
-            //     this.isRead = 'No';
-    
-            // } else if (this.isRead === 'No') {
-            //     this.isRead = 'Yes';
-            // }
-            
-    
-        }
 
 
+})()
 
-
-    
-}
-
-
-
-
-
-
-
-
-// libraryInit();
-
-// function addBookToLibrary() {
-//     // do stuff here
-
-// }
-
-// const librarySubmitBtn = document.querySelector("#submit-btn")
-// librarySubmitBtn.addEventListener("click", addBookToLibrary, false)
 
 
 
