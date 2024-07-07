@@ -155,6 +155,7 @@ libInit();
 const librarySubmitBtn = document.querySelector("#submit-btn")
 librarySubmitBtn.addEventListener("click", addBookToLibrary, false)
 
+const addBookForm = document.getElementById('add-book-form')
 const formBookTitle = document.getElementById('book-title')
 const formBookAuthor = document.getElementById('book-author')
 const formBookPages = document.getElementById('book-pages')
