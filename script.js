@@ -1,4 +1,4 @@
-const myLibrary = [
+var myLibrary = localStorage.userLibrary ? JSON.parse(localStorage.userLibrary) : [
     {
         title: 'The Art of War',
         author: 'Sun Tzu',
@@ -16,6 +16,10 @@ const myLibrary = [
         isRead: 'Yes',
     }
 ];
+
+function setStorage() {
+    localStorage.setItem("userLibrary", JSON.stringify(myLibrary));
+}
 
 
 function Book(title, author, pages, publishYear, genre, isRead) {
@@ -125,6 +129,8 @@ const libInit = function() {
                 cardReadButton.textContent = `Have Read: ${book.isRead}`;
                 
             }
+
+            setStorage()
         }) 
 
 
@@ -132,6 +138,7 @@ const libInit = function() {
             this.parentElement.remove();
             const objRemove = myLibrary.findIndex(value => value.title === book.title )
             myLibrary.splice(objRemove, 1)
+            setStorage()
         })
 
 
@@ -148,21 +155,21 @@ libInit();
 const librarySubmitBtn = document.querySelector("#submit-btn")
 librarySubmitBtn.addEventListener("click", addBookToLibrary, false)
 
+const formBookTitle = document.getElementById('book-title')
+const formBookAuthor = document.getElementById('book-author')
+const formBookPages = document.getElementById('book-pages')
+const formBookPublish = document.getElementById('book-publish-year')
+const formBookGenre = document.getElementById('book-genre')
+const formBookHaveRead = document.getElementById('have-read')
 
 function addBookToLibrary(event) {
     event.preventDefault();
     
-    const formBookTitle = document.getElementById('book-title')
-    const formBookAuthor = document.getElementById('book-author')
-    const formBookPages = document.getElementById('book-pages')
-    const formBookPublish = document.getElementById('book-publish-year')
-    const formBookGenre = document.getElementById('book-genre')
-    const formBookHaveRead = document.getElementById('have-read')
 
     // document.querySelectorAll('#read-btn-id').addEventListener('click', function () {
     //     console.log("this is the prototype func");
     // })  
-
+    
     const newBook = new Book(formBookTitle.value, 
                             formBookAuthor.value,
                             formBookPages.value,
@@ -180,8 +187,16 @@ function addBookToLibrary(event) {
     })
     
     libInit();
+    setStorage()
 
 }
+
+setStorage();
+
+
+// form validation
+
+
 
 
 
