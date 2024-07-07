@@ -194,6 +194,7 @@ function addBookToLibrary(event) {
 
 setStorage();
 
+console.log('test')
 
 // form validation
 
