@@ -163,6 +163,29 @@ function addBookToLibrary(event) {
     // document.querySelectorAll('#read-btn-id').addEventListener('click', function () {
     //     console.log("this is the prototype func");
     // })  
+
+
+    if (!formBookTitle.validity.valid 
+        // || 
+        // !formBookAuthor.validity.valid ||
+        // !formBookPages.validity.valid ||
+        // !formBookPublish.validity.valid ||
+        // !formBookGenre.validity.valid
+        ) 
+        {
+            
+            event.preventDefault()
+            
+            showTitleError();
+            showAuthorError();
+            showPagesError();
+            showPublishError();
+            showGenreError()
+            
+            return;
+    }
+
+
     
     const newBook = new Book(formBookTitle.value, 
         formBookAuthor.value,
@@ -277,27 +300,27 @@ formBookGenre.addEventListener('input', (event) => {
     }
 })
 
-addBookForm.addEventListener('submit', (event) => {
-    if (!formBookTitle.validity.valid 
-        // || 
-        // !formBookAuthor.validity.valid ||
-        // !formBookPages.validity.valid ||
-        // !formBookPublish.validity.valid ||
-        // !formBookGenre.validity.valid
-        ) 
-        {
+// addBookForm.addEventListener('submit', (event) => {
+//     if (!formBookTitle.validity.valid 
+//         // || 
+//         // !formBookAuthor.validity.valid ||
+//         // !formBookPages.validity.valid ||
+//         // !formBookPublish.validity.valid ||
+//         // !formBookGenre.validity.valid
+//         ) 
+//         {
             
-            event.preventDefault()
+//             event.preventDefault()
             
-            showTitleError();
-            showAuthorError();
-            showPagesError();
-            showPublishError();
-            showGenreError()
+//             showTitleError();
+//             showAuthorError();
+//             showPagesError();
+//             showPublishError();
+//             showGenreError()
             
-    }
+//     }
 
-})
+// })
 
 function showTitleError() {
     if (formBookTitle.validity.valueMissing) {
