@@ -23,37 +23,37 @@
                     <fieldset class="form-field" id="title-field">
                         <label for="book-title">
                             <span>Title</span>
-                            <input type="text" id="book-title" name="book-title" required>
-                            <span class="error" aria-live="polite"></span>
+                            <input type="text" id="book-title" name="book-title" minlength="2" required>
+                            <span class="error" id="book-title-error" aria-live="polite"></span>
                         </label>
                     </fieldset>
                     <fieldset class="form-field" id="author-field">
                         <label for="book-author" >
                             <span>Author</span>
-                            <input type="text" id="book-author" name="book-author" required>
-                            <span class="error" aria-live="polite"></span>
+                            <input type="text" id="book-author" name="book-author" minlength="3" required>
+                            <span class="error" id="book-author-error" aria-live="polite"></span>
                         </label>
                     </fieldset>
                     <fieldset class="form-field" id="pages-field">
                         <label for="book-pages">
                             <span>Page Count</span>
-                            <input type="text" id="book-pages" name="book-pages" required>
-                            <span class="error" aria-live="polite"></span>
+                            <input type="number" id="book-pages" name="book-pages" pattern="0-9" min="10" max="10000" required>
+                            <span class="error" id="book-pages-error" aria-live="polite"></span>
                         </label>
                     </fieldset>
                     <fieldset class="form-field" id="year-field">
                         <label for="book-publish-year">
                             <span>Year Published</span>
-                            <input type="text" id="book-publish-year" name="book-publish-year" required>
-                            <span class="error" aria-live="polite"></span>
+                            <input type="number" id="book-publish-year" name="book-publish-year" pattern="0-9" min="1" max="2024" required>
+                            <span class="error" id="book-publish-year-error" aria-live="polite"></span>
                         </label>
 
                     </fieldset>
                     <fieldset class="form-field" id="genre-field">
                         <label for="book-genre">
                             <span>Genre</span>
-                            <input type="text" id="book-genre" name="book-genre" required>
-                            <span class="error" aria-live="polite"></span>
+                            <input type="text" id="book-genre" name="book-genre" minlength="4" required>
+                            <span class="error" id="book-genre-error" aria-live="polite"></span>
                         </label>
 
                     </fieldset>
@@ -64,7 +64,6 @@
                                 <option value="Yes">Yes</option>
                                 <option value="No">No</option>
                             </select>
-                            <span class="error" aria-live="polite"></span>
                         </label>
                     </fieldset>
                     <fieldset class="form-field" id="buttons-field">

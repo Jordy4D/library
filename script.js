@@ -155,41 +155,34 @@ libInit();
 const librarySubmitBtn = document.querySelector("#submit-btn")
 librarySubmitBtn.addEventListener("click", addBookToLibrary, false)
 
-const addBookForm = document.getElementById('add-book-form')
-const formBookTitle = document.getElementById('book-title')
-const formBookAuthor = document.getElementById('book-author')
-const formBookPages = document.getElementById('book-pages')
-const formBookPublish = document.getElementById('book-publish-year')
-const formBookGenre = document.getElementById('book-genre')
-const formBookHaveRead = document.getElementById('have-read')
 
 function addBookToLibrary(event) {
     event.preventDefault();
     
-
+    
     // document.querySelectorAll('#read-btn-id').addEventListener('click', function () {
     //     console.log("this is the prototype func");
     // })  
     
     const newBook = new Book(formBookTitle.value, 
-                            formBookAuthor.value,
+        formBookAuthor.value,
                             formBookPages.value,
                             formBookPublish.value,
                             formBookGenre.value,
                             formBookHaveRead.value )
 
-
+                            
     myLibrary.push(newBook)
-
- 
-        
+    
+    
+    
     document.querySelectorAll('.bookCard').forEach(element => {
         element.remove();
     })
     
     libInit();
     setStorage()
-
+    
 }
 
 setStorage();
@@ -200,6 +193,165 @@ console.log('test')
 
 
 
+const addBookForm = document.getElementById('add-book-form')
+
+const formBookTitle = document.getElementById('book-title')
+const bookTitleError = document.getElementById('book-title-error')
+
+const formBookAuthor = document.getElementById('book-author')
+const bookAuthorError = document.getElementById('book-author-error')
+
+const formBookPages = document.getElementById('book-pages')
+const bookPagesError = document.getElementById('book-pages-error')
+
+const formBookPublish = document.getElementById('book-publish-year')
+const bookPublishError = document.getElementById('book-publish-year-error') 
+
+const formBookGenre = document.getElementById('book-genre')
+const bookGenreError = document.getElementById('book-genre-error')
+
+const formBookHaveRead = document.getElementById('have-read')
 
 
+
+
+
+
+formBookTitle.addEventListener('input', (event) => {
+
+    if (formBookTitle.validity.valid) {
+        bookTitleError.textContent = "";
+        bookTitleError.className = "error"
+
+    } else {
+        showTitleError();
+
+    }
+})
+
+formBookAuthor.addEventListener('input', (event) => {
+
+    if (formBookAuthor.validity.valid) {
+
+        bookAuthorError.textContent = "";
+        bookAuthorError.className = "error"
+
+    } else {
+        showAuthorError();
+
+    }
+})
+
+formBookPages.addEventListener('input', (event) => {
+
+    if (formBookPages.validity.valid) {
+        bookPagesError.textContent = "";
+        bookPagesError.className = "error"
+
+    } else {
+        showPagesError();
+
+    }
+})
+
+formBookPublish.addEventListener('input', (event) => {
+
+    if (formBookPublish.validity.valid) {
+        bookPublishError.textContent = "";
+        bookPublishError.className = "error"
+
+    } else {
+        showPublishError();
+    }
+})
+
+formBookGenre.addEventListener('input', (event) => {
+
+    if (formBookGenre.validity.valid) {
+        bookGenreError.textContent = "";
+        bookGenreError.className = "error"
+
+    } else {
+        showGenreError()
+
+    }
+})
+
+addBookForm.addEventListener('submit', (event) => {
+    if (!formBookTitle.validity.valid 
+        // || 
+        // !formBookAuthor.validity.valid ||
+        // !formBookPages.validity.valid ||
+        // !formBookPublish.validity.valid ||
+        // !formBookGenre.validity.valid
+        ) 
+        {
+            
+            event.preventDefault()
+            
+            showTitleError();
+            showAuthorError();
+            showPagesError();
+            showPublishError();
+            showGenreError()
+            
+    }
+
+})
+
+function showTitleError() {
+    if (formBookTitle.validity.valueMissing) {
+        bookTitleError.textContent = "Please enter a book title"
+    } else if (formBookTitle.validity.tooShort) {
+        bookTitleError.textContent = "Please enter 2 or more characters"
+    }
+
+    bookTitleError.className = "error active"
+}
+
+function showAuthorError() {
+    if (formBookAuthor.validity.valueMissing) {
+        bookAuthorError.textContent = "Please enter the author's name";
+    } else if (formBookAuthor.validity.tooShort) {
+        bookAuthorError.textContent = "Please enter 3 or more characters"
+    }
+
+    bookAuthorError.className = "error active"
+}
+
+function showPagesError() {
+    if (formBookPages.validity.valueMissing) {
+        bookPagesError.textContent = "Please enter number of pages";
+    } else if (formBookPages.validity.rangeOverflow) {
+        bookPagesError.textContent = "Please read a shorter book"
+    } else if (isNaN(formBookPages)) {
+        bookPagesError.textContent = "Please enter numbers only"
+    } else
     
+    bookPagesError.className = "error active"
+
+}
+
+function showPublishError() {
+    if (formBookPublish.validity.valueMissing) {
+        bookPublishError.textContent = "Please enter year of publication";
+    } else if (formBookPublish.validity.rangeOverflow) {
+        bookPublishError.textContent = "Can't be a book published in the future"
+    } else if (isNaN(formBookPublish)) {
+        bookPublishError.textContent = "Please enter numbers only"
+    }
+    
+    bookPublishError.className = "error active"
+
+}
+
+function showGenreError() {
+    if (formBookGenre.validity.valueMissing) {
+        bookGenreError.textContent = "Please enter the genre";
+    } else if (formBookGenre.validity.tooShort) {
+        bookGenreError.textContent = "Please enter 4 or more characters"
+    }
+    
+    bookGenreError.className = "error active"
+
+}
